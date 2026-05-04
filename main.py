@@ -1,5 +1,7 @@
 from src.DataSciencePro import logger
 from src.DataSciencePro.pipelines.data_ingestion import STAGGING_NAME, DataIngestionPipeline
+from src.DataSciencePro.pipelines.data_validation_pipeline import STAGGING_NAME, DataValidationPipeline
+
 
 STAGE_NAME= "Data Ingestion Stage"
 try:
@@ -11,4 +13,15 @@ except Exception as e:
     logger.exception(e)
     raise e
 
-logger.info("Welcome to our custom logging data science Project")
+
+STAGGING_NAME= 'Data Validation Stage'
+
+try:
+    logger.info(f">>>>> stage {STAGGING_NAME} started <<<<<")
+    object= DataValidationPipeline()
+    object.initiate_data_validation()
+    logger.info(f">>>>> stage {STAGGING_NAME} completed <<<<<\n\nx==========x")
+except Exception as e:
+    logger.exception(e)
+    raise e
+    
