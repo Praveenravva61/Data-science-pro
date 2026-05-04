@@ -3,11 +3,13 @@ import sys
 import yaml
 import json
 import joblib
+from pathlib import Path
 from src.DataSciencePro import logger
 from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
-from typing import Any
+from typing import Any, List
+
 from box.exceptions import BoxValueError
 
 
@@ -37,20 +39,14 @@ def read_yaml(path_to_yaml: Path)-> ConfigBox:
     except Exception as e:
         raise e
     
-    
-@ensure_annotations
-def create_dictionary(path_to_dictionaries: path, verbose= True)-> dict:
-    """ 
 
-    Args:
-        path_to_dictionaries (path): _description_
-        verbose (bool, optional): _description_. Defaults to True.
-        
-    """
-    for path in path_to_dictionaries:
-        os.makedirs(path, exist_ok= True)
+
+def create_directories(paths: List[Path], verbose: bool = True):
+    for path in paths:
+        os.makedirs(path, exist_ok=True)
         if verbose:
-            logger.info(f"created directory at {path}")
+            print(f"Created directory at: {path}")
+
 
   
     
