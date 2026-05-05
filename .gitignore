@@ -5,3 +5,5 @@ __pycache__/
 *.pyo
 logs/
 artifacts/
+.env
+
